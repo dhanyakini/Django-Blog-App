@@ -1,0 +1,72 @@
+{% extends 'blog/base.html' %}
+
+{% block body_block %}
+
+<div class="boxx">
+  <u class="changeColor"><h1 class='posttitle'>{{ post_detail.title }}</h1></u>
+
+  {% if post_detail.published_time %}
+
+    <p class="publishedby">Published By: {{post_detail.author}}</p>
+
+  {% else %}
+      <a class="btn btn-default" href="{% url 'post_publish' pk=post_detail.pk %}">Publish</a>
+      <br>
+      <br>
+  {% endif %}
+  <div class="div11">
+  <p>{{ post_detail.text|safe|linebreaksbr }}</p>
+  </div>
+
+  <div class="date">
+    <p>Published on: {{ post_detail.published_time|date:"D M Y" }}</p>
+
+  </div>
+  {% if user.is_authenticated %}
+      <a class="btn btn-primary" href="{% url 'post_edit' pk=post_detail.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+      <a class="btn btn-primary" href="{% url 'post_remove' pk=post_detail.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+  {% endif %}
+  <br>
+  <hr>
+<br><br><br>
+<u><p class="commentsizenotbox" style="font-size: 2em;">Comments Section:</p></u>
+<hr>
+
+
+
+
+
+{% if user.is_authenticated %}
+<a class="btn btn-primary btn-comment" href="{% url 'addcomment' pk=post_detail.pk %}">Add comment</a>
+{% endif %}
+
+
+<ul>
+{% for comment in post_detail.comments.all %}
+<br>
+
+{% if user.is_authenticated or comment.approved %}
+<li> <div class="commentsize">
+<p >{{ comment.text|safe|linebreaks }}</p>
+</div>
+<p>Posted by: <strong>{{ comment.author }}</strong></p>
+<p class="date">Commented on: {{ comment.created_time|date:"D M Y" }}</p>
+  {% if not comment.approved %}
+      <a class="btn btn-default" href="{% url 'approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+
+  {% endif %}
+{% endif %}
+{% if user.is_authenticated %}
+<a class="btn btn-default" href="{% url 'remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+{% endif %}
+<hr></li>
+{% empty %}
+<p style="font-size:2em;">No comments posted.</p>
+{% endfor %}
+</ul>
+
+
+</div>
+<br><br>
+
+{% endblock %}

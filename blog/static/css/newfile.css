@@ -1,0 +1,104 @@
+
+.techfont{
+  font-family: 'Questrial', sans-serif;
+  font-size: 2em;
+  margin-bottom: 10px;
+  margin-right: 0px;
+  /* padding-bottom: 0px; */
+}
+
+body{
+	margin: 0;
+	padding: 0;
+
+}
+
+@keyframes colorPipe{
+	0%{
+		color: #0000FC;
+		animation-timing-function: ease-out;
+	}
+	20%{
+		color: #FC00F8;
+		animation-timing-function: ease-out;
+	}
+	40%{
+		color: #FC0000;
+		animation-timing-function: ease-out;
+	}
+	60%{
+		color: #F0FC00;
+		animation-timing-function: ease-out;
+	}
+	80%{
+		color: #00FC1D;
+		animation-timing-function: ease-out;
+	}
+	100%{
+		color: #0000FC;
+		animation-timing-function: ease-out;
+	}
+}
+.changeColor{
+	animation: colorPipe 10s linear alternate-reverse infinite;
+}
+.posttitle{
+  font-family: 'Headland One', serif;
+  font-size: 4em;
+}
+
+
+
+.brandtext{
+  font-size: 1em;
+}
+/* .container{
+  margin-left: 2%;
+  margin-right: 2%;
+} */
+.date{
+  position: absolute;
+  right:30px;
+  margin-bottom: 10px;
+  font-size:1.2em;
+  font-weight: bold;
+}
+.publishedby{
+  font-size:1.5em;
+  font-weight: bold;
+}
+.titlelist{
+  font-family: 'Headland One', serif;
+  font-size: 1.3em;
+}
+
+.commentsize{
+  font-size:1.4em;
+  color: #0E467D;
+  border: 1px black solid;
+  padding:10px;
+}
+.commentsizenotbox{
+  font-size:1.4em;
+  color: #0E467D;
+
+}
+.div11{
+  font-family: 'Cinzel', serif;
+  border: 1.5px black solid;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  font-size: 1.7em;
+padding: 50px;
+
+}
+.boxx{
+  border: 2px solid black;
+  padding:2%;
+padding: 50px;
+
+}
+.centerstage{
+  margin-left: auto;
+  margin-right: auto;
+}

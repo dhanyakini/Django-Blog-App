@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+{% block body_block %}
+
+{% for post in post_draft %}
+  <div class="post">
+    <a class="posttitle" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+    <div class="div11">
+      <p>{{post.text|safe|linebreaksbr|truncatechars:120}}</p>
+    </div>
+
+    <p class='date'>created: {{ post.created_time|date:'SHORT_DATETIME_FORMAT'}}</p>
+
+  </div>
+  <br>
+  <hr>
+  {% endfor %}
+  {% endblock %}
